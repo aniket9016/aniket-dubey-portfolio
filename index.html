@@ -89,13 +89,89 @@ footer{padding:30px 0;border-top:1px solid var(--line);color:var(--muted);font-s
 .reveal{animation:rise .7s ease both}@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 @media(max-width:900px){.hero-grid,.grid2,.contact{grid-template-columns:1fr}.hero{padding-top:65px}.hero-card{order:-1}.photo-wrap{width:min(330px,75vw)}.float-card{left:0}.metrics{grid-template-columns:repeat(2,1fr)}.projects,.services{grid-template-columns:1fr}.edu{grid-template-columns:1fr}.navlinks{display:none}}
 @media(max-width:560px){h1{font-size:52px}.stats{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}.panel,.project,.contact-main{padding:22px}footer{display:block}footer span{display:block;margin-top:8px}}
+
+/* Profile swipe deck */
+.logo{display:flex;align-items:center;gap:9px}
+.brand-mark{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;font:800 10px/1 ui-monospace,monospace;color:#061018;background:linear-gradient(135deg,var(--cyan),#a89cff);box-shadow:0 5px 20px rgba(85,230,255,.16)}
+.profile-deck{
+  position:relative;width:min(430px,88vw);margin:auto;isolation:isolate
+}
+.profile-deck:before{
+  content:"";position:absolute;inset:-24px -18px -20px -24px;
+  border:1px solid rgba(85,230,255,.16);
+  border-radius:48px 78px 58px 72px;
+  transform:rotate(5deg);z-index:-2;
+  box-shadow:0 0 70px rgba(85,230,255,.045)
+}
+.profile-deck:after{
+  content:"";position:absolute;inset:-10px -30px -28px 12px;
+  border:1px solid rgba(139,124,255,.14);
+  border-radius:72px 48px 78px 55px;
+  transform:rotate(-5deg);z-index:-2;
+  box-shadow:0 0 70px rgba(139,124,255,.055)
+}
+
+.deck-viewport{overflow:hidden;border-radius:32px;touch-action:pan-y;box-shadow:var(--shadow);cursor:grab;user-select:none;-webkit-user-select:none}
+.deck-track{display:flex;will-change:transform;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.deck-slide{
+  min-width:100%;height:510px;position:relative;display:flex;flex-direction:column;
+  justify-content:center;background:linear-gradient(145deg,#111a2b,#070b13);
+  border:1px solid rgba(255,255,255,.1);overflow:hidden
+}
+.deck-slide:before{
+  content:"";position:absolute;width:230px;height:230px;right:-85px;top:-90px;
+  border-radius:47% 53% 35% 65% / 62% 38% 62% 38%;
+  background:rgba(85,230,255,.055);transform:rotate(25deg);pointer-events:none
+}
+.deck-slide:after{
+  content:"";position:absolute;width:180px;height:120px;left:-80px;bottom:-45px;
+  border:1px solid rgba(139,124,255,.12);
+  border-radius:60% 40% 55% 45%;transform:rotate(-15deg);pointer-events:none
+}
+.deck-slide > *{position:relative;z-index:1}
+
+.deck-slide .photo-wrap{width:100%;height:100%}
+.deck-slide .profile{height:100%;aspect-ratio:auto;border:0;border-radius:0;box-shadow:none}
+.deck-slide .float-card{left:22px;bottom:44px}
+.slide-caption{position:absolute;right:18px;bottom:16px;padding:7px 10px;border-radius:999px;background:rgba(5,7,13,.75);backdrop-filter:blur(12px);font-size:10px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#d9e7f5;border:1px solid var(--line)}
+.slide-caption span{color:var(--cyan);margin-right:5px}
+.deck-info{padding:34px}
+.info-art{height:180px;position:relative;display:grid;place-items:center;margin-bottom:15px}
+.terminal-mark{width:115px;height:115px;border-radius:30px;display:grid;place-items:center;font:900 27px/1 ui-monospace,monospace;color:var(--cyan);background:rgba(85,230,255,.05);border:1px solid rgba(85,230,255,.2);box-shadow:0 0 60px rgba(85,230,255,.08)}
+.orbit{position:absolute;border:1px solid rgba(139,124,255,.22);border-radius:50%;transform:rotate(25deg)}
+.orbit-a{width:280px;height:110px}.orbit-b{width:220px;height:145px;transform:rotate(-25deg)}
+.deck-copy h3,.snapshot h3{font-size:31px;line-height:1.05;letter-spacing:-.04em;margin:9px 0}
+.deck-copy p{color:var(--muted);font-size:14px}
+.snapshot{width:100%}
+.snapshot-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.snapshot-grid div{padding:16px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.025)}
+.snapshot-grid strong{display:block;font-size:23px}.snapshot-grid small{color:var(--muted);font-size:10px}
+.deck-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:rgba(5,7,13,.78);color:#fff;font-size:25px;cursor:pointer;backdrop-filter:blur(10px)}
+.deck-prev{left:-18px}.deck-next{right:-18px}.deck-arrow:hover{border-color:var(--cyan);color:var(--cyan)}
+.deck-dots{display:flex;gap:6px;justify-content:center;margin-top:13px}.deck-dots button{width:7px;height:7px;padding:0;border:0;border-radius:50%;background:#4b5568;cursor:pointer}.deck-dots button.active{width:22px;border-radius:99px;background:var(--cyan)}
+.swipe-hint{text-align:center;color:#68758a;font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin-top:8px}
+.credential-wide{display:flex;align-items:center;gap:18px}
+.credential-icon{width:58px;height:58px;border-radius:16px;display:grid;place-items:center;font-weight:950;color:#061018;background:linear-gradient(135deg,var(--green),#b7ffd9);flex:none}
+.credential-copy{flex:1}.credential-copy p{margin-top:3px}
+.hobby-note{margin-top:15px;padding:13px 16px;border:1px dashed rgba(85,230,255,.16);border-radius:13px;color:#7f8da4;font-size:11px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:25px;align-items:start}
+.footer-logo{font-size:18px;font-weight:900;display:flex;align-items:center;gap:8px}.footer-logo b{color:var(--cyan)}
+.footer-grid p{color:#718096;margin-top:8px;font-size:11px}
+.footer-links,.footer-social{display:flex;gap:12px;flex-wrap:wrap;font-size:11px;color:#8e9ab0}
+.footer-links a:hover,.footer-social a:hover{color:var(--cyan)}
+.footer-bottom{grid-column:1/-1;padding-top:18px;border-top:1px solid var(--line);color:#59667b;font-size:10px}
+@media(max-width:900px){.credential-wide{align-items:flex-start;flex-wrap:wrap}.credential-copy{min-width:200px}.footer-grid{grid-template-columns:1fr 1fr}.footer-bottom{grid-column:1/-1}}
+@media(max-width:560px){.deck-slide{height:430px}.deck-info{padding:24px}.deck-copy h3,.snapshot h3{font-size:26px}.deck-prev{left:8px}.deck-next{right:8px}.credential-wide{display:grid;grid-template-columns:auto 1fr}.credential-wide .btn{grid-column:1/-1}.footer-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
 <nav><div class="container nav">
-  <a class="logo" href="#home">Aniket<b>.</b></a>
+  <a class="logo" href="#home">
+      <span class="brand-mark" aria-hidden="true">&lt;/&gt;</span><span>Aniket<b>.</b></span>
+    </a>
   <div class="navlinks">
-    <a href="#about">About</a><a href="#experience">Experience</a><a href="#work">Work</a><a href="#education">Education</a><a href="#contact">Contact</a>
+    <a href="#about">About</a><a href="#experience">Experience</a><a href="#work">Work</a><a href="#education">Education</a><a href="#beyond">Life</a><a href="#contact">Contact</a>
   </div>
   <a class="btn" href="https://www.linkedin.com/in/aniket0638/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
 </div></nav>
@@ -112,7 +188,7 @@ footer{padding:30px 0;border-top:1px solid var(--line);color:var(--muted);font-s
         <a class="btn" href="Aniket_Dubey_Resume_2026.pdf" target="_blank">View résumé ↗</a>
         <a class="btn" href="mailto:aniketdubey638@gmail.com">Let's talk</a>
       </div>
-      <div class="availability"><i class="pulse"></i> Currently working as Associate Software Engineer · Triveni Global Software Services LLP</div>
+      <div class="availability"><i class="pulse"></i> Currently working as Software Engineer · Triveni Global Software Services LLP</div>
       <div class="stats">
         <div class="stat"><strong>95%</strong><span>On-time sprint delivery</span></div>
         <div class="stat"><strong>30%</strong><span>Page-load reduction</span></div>
@@ -120,9 +196,56 @@ footer{padding:30px 0;border-top:1px solid var(--line);color:var(--muted);font-s
       </div>
     </div>
     <div class="hero-card reveal">
-      <div class="photo-wrap">
-        <img class="profile" src="profile.jpg" alt="Aniket Dubey">
-        <div class="float-card"><strong>AZ-900 ✓</strong><span>Azure Fundamentals</span></div>
+      <div class="profile-deck" id="profileDeck" aria-label="Aniket profile swiper">
+        <div class="deck-viewport">
+          <div class="deck-track" id="deckTrack">
+            <article class="deck-slide">
+              <div class="photo-wrap">
+                <img class="profile" src="profile.jpg" alt="Aniket Dubey">
+              </div>
+              <div class="slide-caption"><span>01</span> Profile</div>
+            </article>
+
+            <article class="deck-slide deck-info">
+              <div class="info-art">
+                <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+                <div class="terminal-mark">&lt;/&gt;</div>
+              </div>
+              <div class="deck-copy">
+                <div class="eyebrow">02 · Engineering</div>
+                <h3>Full-stack from UI to cloud.</h3>
+                <p>.NET + React + REST APIs + SQL + Azure, with a production-first mindset.</p>
+                <div class="chips">
+                  <span class="chip">C#</span><span class="chip">React</span><span class="chip">ASP.NET Core</span>
+                  <span class="chip">SQL Server</span><span class="chip">Azure</span>
+                </div>
+              </div>
+              <div class="slide-caption"><span>02</span> Stack</div>
+            </article>
+
+            <article class="deck-slide deck-info">
+              <div class="snapshot">
+                <div class="eyebrow">03 · Snapshot</div>
+                <h3>Build. Improve. Ship.</h3>
+                <div class="snapshot-grid">
+                  <div><strong>95%</strong><small>on-time sprint delivery</small></div>
+                  <div><strong>30%</strong><small>page-load improvement</small></div>
+                  <div><strong>Azure</strong><small>Cloud infrastructure</small></div>
+                  <div><strong>MCA</strong><small>2025</small></div>
+                </div>
+              </div>
+              <div class="slide-caption"><span>03</span> Snapshot</div>
+            </article>
+          </div>
+        </div>
+        <button class="deck-arrow deck-prev" type="button" aria-label="Previous profile card">‹</button>
+        <button class="deck-arrow deck-next" type="button" aria-label="Next profile card">›</button>
+        <div class="deck-dots" id="deckDots" aria-label="Profile slides">
+          <button class="active" type="button" aria-label="Profile slide 1"></button>
+          <button type="button" aria-label="Profile slide 2"></button>
+          <button type="button" aria-label="Profile slide 3"></button>
+        </div>
+        <div class="swipe-hint">← swipe / drag →</div>
       </div>
     </div>
   </div>
@@ -166,21 +289,34 @@ footer{padding:30px 0;border-top:1px solid var(--line);color:var(--muted);font-s
   <div class="section-head"><div><div class="eyebrow">03 · Experience</div><h2>From internship to production.</h2></div><p>Professional experience centered on full-stack delivery, Azure operations and measurable application improvements.</p></div>
   <div class="timeline">
     <div class="role">
-      <h3>Associate Software Engineer · Triveni Global Software Services LLP</h3>
-      <div class="meta">June 2025 — Present · Surat, Gujarat</div>
+      <h3>Software Engineer · Triveni Global Software Services LLP</h3>
+      <div class="meta">July 2026 — Present · Surat, Gujarat · On-site</div>
       <ul>
-        <li>Build and maintain full-stack web applications with .NET MVC, Web API, React and Node.js using scalable architecture.</li>
-        <li>Achieved 95% on-time sprint delivery through Azure DevOps task tracking and structured execution.</li>
-        <li>Optimized SQL queries and React components, reducing page-load time by 30% across key modules.</li>
-        <li>Support Azure infrastructure deployments, configuration changes and production release cycles for a live SaaS platform.</li>
+        <li>Build and maintain full-stack applications using .NET, ASP.NET Core Web API, React and Node.js with scalable architecture.</li>
+        <li>Manage and support Microsoft Azure infrastructure, including VMs, App Services, Azure Functions, deployments, configuration and production releases.</li>
+        <li>Optimize SQL queries and React components, contributing to a 30% reduction in page-load time across key application modules.</li>
+        <li>Plan and track development tasks through Azure DevOps, supporting 95% on-time sprint delivery.</li>
+        <li>Monitor production environments using Azure logs, alerts and health checks to improve reliability and incident response.</li>
+      </ul>
+    </div>
+    <div class="role">
+      <h3>Associate Software Engineer · Triveni Global Software Services LLP</h3>
+      <div class="meta">May 2025 — June 2026 · Surat, Gujarat · On-site</div>
+      <ul>
+        <li>Developed and maintained full-stack web applications using .NET MVC, Web API, React and Node.js.</li>
+        <li>Built REST APIs and backend services using ASP.NET Core and .NET Web API.</li>
+        <li>Developed responsive React.js components and integrated frontend applications with backend APIs.</li>
+        <li>Optimized SQL queries and application components to improve performance and user experience.</li>
+        <li>Used Azure DevOps for sprint planning, task tracking and structured release cycles.</li>
       </ul>
     </div>
     <div class="role">
       <h3>Software Engineer Intern · Triveni Global Software Services LLP</h3>
-      <div class="meta">January 2025 — May 2025 · Surat, Gujarat</div>
+      <div class="meta">January 2025 — May 2025 · Surat, Gujarat · On-site</div>
       <ul>
         <li>Built and integrated REST APIs using ASP.NET Core and .NET Web API to improve application data flow.</li>
         <li>Developed responsive React.js components and resolved frontend/backend issues during active sprint cycles.</li>
+        <li>Collaborated with the development team on feature implementation, testing and releases.</li>
       </ul>
     </div>
   </div>
@@ -255,6 +391,54 @@ footer{padding:30px 0;border-top:1px solid var(--line);color:var(--muted);font-s
 </div>
 </section>
 
+<section id="beyond">
+<div class="container">
+  <div class="section-head">
+    <div><div class="eyebrow">07 · Beyond Code</div><h2>Life beyond the screen.</h2></div>
+    <p>Technology is a big part of what I do, but I also enjoy travelling, music and experiencing new things. I like keeping life curious, active and open to new experiences.</p>
+  </div>
+
+  <div class="services">
+    <div class="service">
+      <div class="ico">✈️</div>
+      <h3>Travel</h3>
+      <p>Exploring new places, discovering different cultures and collecting experiences along the way. Travel is one of my favourite ways to step outside the usual routine.</p>
+    </div>
+
+    <div class="service">
+      <div class="ico">🎵</div>
+      <h3>Music</h3>
+      <p>Music is part of my everyday life—from relaxing and travelling to finding the right mood while working or simply enjoying the moment.</p>
+    </div>
+
+    <div class="service">
+      <div class="ico">🌱</div>
+      <h3>Explore & Experiment</h3>
+      <p>I enjoy trying new things, learning from new experiences and experimenting with ideas instead of always staying inside the comfort zone.</p>
+    </div>
+  </div>
+
+  <div class="hobby-note">
+    <strong>Curiosity keeps things interesting.</strong>
+    <span> Build something new, visit somewhere different, discover new music, try a new experience—and keep learning along the way.</span>
+  </div>
+</div>
+</section>
+
+<section id="credential">
+<div class="container">
+  <div class="cert credential-wide">
+    <div class="credential-icon">AZ</div>
+    <div class="credential-copy">
+      <div class="eyebrow">Microsoft Certification</div>
+      <h3>Azure Fundamentals · AZ-900</h3>
+      <p>Microsoft · 2024 · Credential link from the résumé</p>
+    </div>
+    <a class="btn primary" href="https://learn.microsoft.com/en-us/users/aniketdubey-0722/credentials/31048ef27746dbf8" target="_blank" rel="noreferrer">View credential ↗</a>
+  </div>
+</div>
+</section>
+
 <section id="contact">
 <div class="container">
   <div class="contact">
@@ -283,6 +467,118 @@ footer{padding:30px 0;border-top:1px solid var(--line);color:var(--muted);font-s
 </section>
 </main>
 
-<footer><div class="container" style="display:flex;justify-content:space-between;gap:20px"><span>© 2026 Aniket Dubey</span><span>Designed for engineers who ship.</span></div></footer>
-</body>
-</html>
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <a class="footer-logo" href="#home"><span class="brand-mark">&lt;/&gt;</span> Aniket<b>.</b></a>
+      <p>Full-Stack Engineer · .NET · React · Azure</p>
+    </div>
+    <div class="footer-links">
+      <a href="#about">About</a><a href="#work">Work</a><a href="#education">Education</a><a href="#beyond">Life</a><a href="#contact">Contact</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://github.com/aniket9016" target="_blank" rel="noreferrer">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/aniket0638/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+      <a href="mailto:aniketdubey638@gmail.com">Email ↗</a>
+    </div>
+    <div class="footer-bottom">© 2026 Aniket Dubey</div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const deck = document.getElementById('profileDeck');
+  const track = document.getElementById('deckTrack');
+  const dots = [...document.querySelectorAll('#deckDots button')];
+  const prev = document.querySelector('.deck-prev');
+  const next = document.querySelector('.deck-next');
+  const viewport = document.querySelector('.deck-viewport');
+  if (!deck || !track || !viewport) return;
+
+  const slideCount = 3;
+  let index = 0;
+  let startX = 0;
+  let deltaX = 0;
+  let dragging = false;
+  let pointerId = null;
+
+  const width = () => viewport.clientWidth;
+
+  function render(animate = true) {
+    track.style.transition = animate
+      ? 'transform .45s cubic-bezier(.2,.8,.2,1)'
+      : 'none';
+    track.style.transform = `translate3d(-${index * width()}px, 0, 0)`;
+    dots.forEach((dot, n) => {
+      dot.classList.toggle('active', n === index);
+      dot.setAttribute('aria-current', n === index ? 'true' : 'false');
+    });
+  }
+
+  function goTo(n) {
+    index = (n + slideCount) % slideCount;
+    render(true);
+  }
+
+  prev.addEventListener('click', e => {
+    e.stopPropagation();
+    goTo(index - 1);
+  });
+
+  next.addEventListener('click', e => {
+    e.stopPropagation();
+    goTo(index + 1);
+  });
+
+  dots.forEach((dot, n) => {
+    dot.addEventListener('click', e => {
+      e.stopPropagation();
+      goTo(n);
+    });
+  });
+
+  viewport.addEventListener('pointerdown', e => {
+    if (e.target.closest('button')) return;
+    dragging = true;
+    pointerId = e.pointerId;
+    startX = e.clientX;
+    deltaX = 0;
+    viewport.setPointerCapture(pointerId);
+    track.style.transition = 'none';
+  });
+
+  viewport.addEventListener('pointermove', e => {
+    if (!dragging || e.pointerId !== pointerId) return;
+    deltaX = e.clientX - startX;
+    track.style.transform =
+      `translate3d(${-(index * width()) + deltaX}px, 0, 0)`;
+  });
+
+  function endSwipe(e) {
+    if (!dragging || (pointerId !== null && e.pointerId !== pointerId)) return;
+    dragging = false;
+    try { viewport.releasePointerCapture(pointerId); } catch (_) {}
+    pointerId = null;
+
+    if (Math.abs(deltaX) >= 50) {
+      goTo(index + (deltaX < 0 ? 1 : -1));
+    } else {
+      render(true);
+    }
+    deltaX = 0;
+  }
+
+  viewport.addEventListener('pointerup', endSwipe);
+  viewport.addEventListener('pointercancel', endSwipe);
+
+  window.addEventListener('resize', () => render(false));
+
+  deck.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') goTo(index + 1);
+    if (e.key === 'ArrowLeft') goTo(index - 1);
+  });
+
+  deck.tabIndex = 0;
+  render(false);
+})();
+</script>
