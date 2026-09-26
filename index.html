@@ -3,126 +3,286 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aniket Dubey | Full-Stack .NET & React Developer</title>
-<meta name="description" content="Portfolio of Aniket Dubey — Full-Stack Engineer specializing in .NET, React, REST APIs, SQL Server and Azure.">
+<meta name="theme-color" content="#070a12">
+<meta name="description" content="Aniket Devendra Dubey — Full-Stack Engineer specializing in .NET, React, Azure, REST APIs and cloud infrastructure.">
+<title>Aniket Dubey — Full-Stack Engineer</title>
 <style>
 :root{
-  --bg:#070a12;--surface:#0e1320;--surface2:#12192a;--text:#edf2ff;--muted:#9ba7bd;
-  --line:rgba(255,255,255,.09);--accent:#7c5cff;--accent2:#22d3ee;--max:1160px;
+  --bg:#05070d;--panel:#0b101b;--panel2:#0f1726;--text:#f4f7ff;--muted:#98a6bd;
+  --line:rgba(255,255,255,.09);--cyan:#55e6ff;--violet:#8b7cff;--green:#5ee6a8;
+  --max:1180px;--shadow:0 30px 100px rgba(0,0,0,.38);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;background:
-radial-gradient(circle at 80% 10%,rgba(124,92,255,.16),transparent 28%),var(--bg);color:var(--text);line-height:1.6}
+body{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:
+    radial-gradient(circle at 10% 5%,rgba(85,230,255,.08),transparent 25%),
+    radial-gradient(circle at 85% 8%,rgba(139,124,255,.13),transparent 28%),
+    var(--bg); color:var(--text); line-height:1.65; overflow-x:hidden;
+}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,#000,transparent 75%)}
 a{color:inherit;text-decoration:none}
 .container{width:min(var(--max),92%);margin:auto}
-nav{position:sticky;top:0;z-index:20;background:rgba(7,10,18,.78);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
-.nav{height:70px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-weight:800;font-size:20px}.logo span{color:var(--accent2)}
-.navlinks{display:flex;gap:24px;color:var(--muted);font-size:14px}.navlinks a:hover{color:#fff}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 17px;border-radius:11px;border:1px solid var(--line);font-weight:700;font-size:14px;transition:.2s}
-.btn.primary{background:linear-gradient(135deg,var(--accent),#5d8cff);border:0}.btn:hover{transform:translateY(-2px)}
-.hero{padding:105px 0 80px;min-height:680px;display:flex;align-items:center}
-.hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:70px;align-items:center}
-.kicker{color:var(--accent2);font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:13px}
-h1{font-size:clamp(46px,7vw,82px);line-height:.98;letter-spacing:-.055em;margin:16px 0 25px}
-.gradient{background:linear-gradient(90deg,#fff,var(--accent2),#9d83ff);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p{color:var(--muted);font-size:18px;max-width:680px}
-.actions{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
-.stats{display:flex;gap:32px;margin-top:42px}.stat strong{font-size:25px;display:block}.stat span{font-size:12px;color:var(--muted)}
-.code-card{background:linear-gradient(145deg,#11182a,#0b0f1a);border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:0 30px 80px rgba(0,0,0,.35)}
-.window{display:flex;gap:7px;margin-bottom:22px}.dot{width:10px;height:10px;border-radius:50%;background:#3b4355}
-pre{font:13px/1.8 ui-monospace,SFMono-Regular,Menlo,monospace;color:#cbd5e1;white-space:pre-wrap}.key{color:#8b7cff}.str{color:#7ee787}.fn{color:#67e8f9}
-section{padding:95px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:35px}
-.eyebrow{color:var(--accent2);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em}
-h2{font-size:42px;line-height:1.1;margin-top:7px;letter-spacing:-.035em}.section-head p{color:var(--muted);max-width:540px}
-.about{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.panel{background:rgba(14,19,32,.8);border:1px solid var(--line);border-radius:20px;padding:28px}.panel p{color:var(--muted)}
-.skills{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}.chip{padding:8px 12px;border-radius:999px;background:var(--surface2);border:1px solid var(--line);font-size:13px;color:#dce4f5}
-.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.project{display:flex;flex-direction:column;background:linear-gradient(145deg,rgba(18,25,42,.92),rgba(11,15,25,.92));border:1px solid var(--line);border-radius:20px;padding:24px;min-height:280px;transition:.25s}
-.project:hover{transform:translateY(-5px);border-color:rgba(124,92,255,.5)}
-.project-top{display:flex;justify-content:space-between;gap:15px}.icon{width:45px;height:45px;border-radius:13px;display:grid;place-items:center;background:rgba(124,92,255,.15);font-size:20px}
-.project h3{font-size:22px;margin-top:18px}.project p{color:var(--muted);font-size:14px;margin:10px 0 18px}
-.project .chips{display:flex;gap:7px;flex-wrap:wrap}.project .chips span{font-size:11px;padding:5px 8px;background:#0a0f1b;border:1px solid var(--line);border-radius:7px;color:#b8c3d8}
-.project-foot{margin-top:auto;padding-top:20px;display:flex;gap:10px}.link{font-size:13px;font-weight:700;color:#b9b0ff}
-.experience{border-left:1px solid var(--line);padding-left:30px}.timeline{position:relative;margin-bottom:40px}.timeline:before{content:"";position:absolute;left:-36px;top:7px;width:11px;height:11px;border-radius:50%;background:var(--accent2);box-shadow:0 0 0 5px rgba(34,211,238,.1)}
-.timeline h3{font-size:20px}.meta{color:var(--accent2);font-size:13px;margin:3px 0 12px}.timeline p{color:var(--muted);font-size:14px}
-.services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.service{padding:25px;border:1px solid var(--line);border-radius:18px;background:var(--surface)}.service h3{margin:12px 0 7px}.service p{color:var(--muted);font-size:14px}
-.contact{display:grid;grid-template-columns:1fr 1fr;gap:20px}.contact-box{padding:34px;border-radius:22px;background:linear-gradient(145deg,#11172a,#0c101b);border:1px solid var(--line)}.contact-box p{color:var(--muted);margin:10px 0 22px}
-footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:13px;display:flex;justify-content:space-between}
-@media(max-width:850px){.hero-grid,.about,.contact{grid-template-columns:1fr}.projects{grid-template-columns:1fr}.services{grid-template-columns:1fr}.navlinks{display:none}.hero{padding-top:70px}.section-head{display:block}.section-head p{margin-top:12px}.stats{gap:18px}}
+nav{position:sticky;top:0;z-index:100;background:rgba(5,7,13,.72);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:20px;font-weight:900;letter-spacing:-.04em}.logo b{color:var(--cyan)}
+.navlinks{display:flex;gap:22px;color:var(--muted);font-size:13px;font-weight:700}
+.navlinks a:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 17px;border:1px solid var(--line);border-radius:12px;font-size:13px;font-weight:800;transition:.2s;background:rgba(255,255,255,.025)}
+.btn:hover{transform:translateY(-2px);border-color:rgba(85,230,255,.35)}
+.btn.primary{border:0;color:#061018;background:linear-gradient(135deg,var(--cyan),#9ff4ff);box-shadow:0 10px 35px rgba(85,230,255,.16)}
+.hero{min-height:820px;padding:90px 0 70px;display:flex;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:75px;align-items:center}
+.eyebrow{color:var(--cyan);font-size:11px;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
+h1{font-size:clamp(54px,7vw,94px);line-height:.94;letter-spacing:-.065em;margin:18px 0 26px}
+.gradient{background:linear-gradient(100deg,#fff 10%,var(--cyan) 50%,#a89cff 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-copy{font-size:18px;color:var(--muted);max-width:700px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.availability{display:inline-flex;align-items:center;gap:8px;margin-top:24px;color:#b9c5d9;font-size:12px}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 6px rgba(94,230,168,.09)}
+.hero-card{position:relative}
+.photo-wrap{position:relative;width:min(390px,85vw);margin:auto}
+.photo-wrap:before{content:"";position:absolute;inset:-22px;border:1px solid rgba(85,230,255,.16);border-radius:38px;transform:rotate(5deg)}
+.photo-wrap:after{content:"";position:absolute;inset:15px -18px -18px 18px;border:1px solid rgba(139,124,255,.16);border-radius:32px;transform:rotate(-4deg);z-index:-1}
+.profile{width:100%;aspect-ratio:1/1;border-radius:32px;object-fit:cover;display:block;border:1px solid rgba(255,255,255,.12);box-shadow:var(--shadow)}
+.float-card{position:absolute;left:-30px;bottom:30px;background:rgba(11,16,27,.9);border:1px solid var(--line);border-radius:16px;padding:13px 15px;backdrop-filter:blur(15px);box-shadow:var(--shadow);font-size:12px}
+.float-card strong{display:block;font-size:16px}.float-card span{color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:38px;max-width:670px}
+.stat{padding:18px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.025)}
+.stat strong{font-size:25px;display:block}.stat span{font-size:11px;color:var(--muted)}
+section{padding:105px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:38px}
+.section-head p{max-width:560px;color:var(--muted)}
+h2{font-size:clamp(34px,5vw,55px);line-height:1;letter-spacing:-.045em;margin-top:8px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.panel{background:linear-gradient(145deg,rgba(15,23,38,.92),rgba(8,12,21,.92));border:1px solid var(--line);border-radius:22px;padding:30px;box-shadow:0 18px 55px rgba(0,0,0,.18)}
+.panel p{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{font-size:12px;padding:7px 10px;border-radius:999px;background:rgba(85,230,255,.055);border:1px solid rgba(85,230,255,.12);color:#d8f7ff}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.metric{padding:24px;border:1px solid var(--line);border-radius:18px;background:var(--panel)}
+.metric .num{font-size:32px;font-weight:900;letter-spacing:-.04em}.metric small{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+.timeline{position:relative;margin-left:12px;border-left:1px solid var(--line);padding-left:30px}
+.role{position:relative;padding-bottom:42px}
+.role:before{content:"";position:absolute;left:-37px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 6px rgba(85,230,255,.08)}
+.role h3{font-size:21px}.meta{color:var(--cyan);font-size:12px;font-weight:800;margin:4px 0 12px}.role ul{padding-left:18px;color:var(--muted);font-size:14px}.role li{margin:6px 0}
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.project{position:relative;min-height:310px;padding:27px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(145deg,#0e1625,#080c15);transition:.25s;overflow:hidden}
+.project:hover{transform:translateY(-5px);border-color:rgba(85,230,255,.28)}
+.project:after{content:"";position:absolute;width:150px;height:150px;border-radius:50%;right:-70px;top:-70px;background:rgba(139,124,255,.12);filter:blur(5px)}
+.project .tag{font-size:10px;color:var(--cyan);font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+.project h3{font-size:24px;margin:10px 0 9px}.project p{color:var(--muted);font-size:14px;max-width:600px}
+.project .chips{margin-top:18px}.project .chips span{font-size:10px;padding:5px 8px;border:1px solid var(--line);border-radius:7px;color:#bdc9dc;background:#080d17}
+.project-foot{display:flex;gap:9px;margin-top:24px;flex-wrap:wrap}
+.edu{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.edu-card{padding:25px;border:1px solid var(--line);border-radius:20px;background:var(--panel)}
+.edu-card .year{color:var(--cyan);font-size:12px;font-weight:800}.edu-card h3{margin:8px 0 3px}.edu-card p{color:var(--muted);font-size:13px}
+.cert{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:25px;border:1px solid rgba(94,230,168,.15);border-radius:20px;background:linear-gradient(145deg,rgba(94,230,168,.06),rgba(15,23,38,.9))}
+.cert p{color:var(--muted);font-size:13px}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.service{padding:25px;border:1px solid var(--line);border-radius:20px;background:var(--panel)}.service .ico{font-size:24px}.service h3{margin:12px 0 7px}.service p{color:var(--muted);font-size:13px}
+.contact{display:grid;grid-template-columns:1.25fr .75fr;gap:18px}
+.contact-main{padding:38px;border-radius:25px;border:1px solid var(--line);background:linear-gradient(145deg,#111b2d,#090d16)}
+.contact-main p{color:var(--muted);max-width:680px;margin-top:12px}.contact-list{margin-top:25px;display:grid;gap:9px;color:#cbd5e5;font-size:13px}.contact-list a{color:var(--cyan)}
+footer{padding:30px 0;border-top:1px solid var(--line);color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:20px}
+.reveal{animation:rise .7s ease both}@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media(max-width:900px){.hero-grid,.grid2,.contact{grid-template-columns:1fr}.hero{padding-top:65px}.hero-card{order:-1}.photo-wrap{width:min(330px,75vw)}.float-card{left:0}.metrics{grid-template-columns:repeat(2,1fr)}.projects,.services{grid-template-columns:1fr}.edu{grid-template-columns:1fr}.navlinks{display:none}}
+@media(max-width:560px){h1{font-size:52px}.stats{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}.panel,.project,.contact-main{padding:22px}footer{display:block}footer span{display:block;margin-top:8px}}
 </style>
 </head>
 <body>
 <nav><div class="container nav">
-  <a class="logo" href="#home">Aniket<span>.</span></a>
-  <div class="navlinks"><a href="#about">About</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#services">Services</a><a href="#contact">Contact</a></div>
-  <a class="btn" href="https://github.com/aniket9016" target="_blank">GitHub ↗</a>
+  <a class="logo" href="#home">Aniket<b>.</b></a>
+  <div class="navlinks">
+    <a href="#about">About</a><a href="#experience">Experience</a><a href="#work">Work</a><a href="#education">Education</a><a href="#contact">Contact</a>
+  </div>
+  <a class="btn" href="https://www.linkedin.com/in/aniket0638/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
 </div></nav>
 
 <main id="home">
-<section class="hero"><div class="container hero-grid">
-  <div>
-    <div class="kicker">Full-Stack Engineer · Surat, India</div>
-    <h1>Building <span class="gradient">scalable web</span> experiences.</h1>
-    <p>I’m Aniket Dubey, a full-stack engineer focused on .NET, React, REST APIs, SQL Server and Azure. I build clean, production-ready applications and help turn ideas into reliable software.</p>
-    <div class="actions"><a class="btn primary" href="#contact">Let's work together →</a><a class="btn" href="#projects">View projects</a></div>
-    <div class="stats"><div><strong>1+</strong><span>Years experience</span></div><div><strong>95%</strong><span>Sprint delivery</span></div><div><strong>30%</strong><span>Page-load improvement</span></div></div>
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="reveal">
+      <div class="eyebrow">Full-Stack Engineer · Surat, Gujarat</div>
+      <h1>Software that feels <span class="gradient">built, not assembled.</span></h1>
+      <p class="hero-copy">I'm Aniket Devendra Dubey — a .NET + React engineer building production web applications, REST APIs and Azure-powered systems. I care about clean architecture, measurable performance and reliable releases.</p>
+      <div class="actions">
+        <a class="btn primary" href="#work">Explore my work ↓</a>
+        <a class="btn" href="Aniket_Dubey_Resume_2026.pdf" target="_blank">View résumé ↗</a>
+        <a class="btn" href="mailto:aniketdubey638@gmail.com">Let's talk</a>
+      </div>
+      <div class="availability"><i class="pulse"></i> Currently working as Associate Software Engineer · Triveni Global Software Services LLP</div>
+      <div class="stats">
+        <div class="stat"><strong>95%</strong><span>On-time sprint delivery</span></div>
+        <div class="stat"><strong>30%</strong><span>Page-load reduction</span></div>
+        <div class="stat"><strong>1+ yr</strong><span>Professional experience</span></div>
+      </div>
+    </div>
+    <div class="hero-card reveal">
+      <div class="photo-wrap">
+        <img class="profile" src="profile.jpg" alt="Aniket Dubey">
+        <div class="float-card"><strong>AZ-900 ✓</strong><span>Azure Fundamentals</span></div>
+      </div>
+    </div>
   </div>
-  <div class="code-card"><div class="window"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
-<pre><span class="key">const</span> developer = {
-  name: <span class="str">"Aniket Dubey"</span>,
-  role: <span class="str">"Full-Stack Engineer"</span>,
-  stack: [
-    <span class="str">".NET"</span>, <span class="str">"React"</span>,
-    <span class="str">"SQL"</span>, <span class="str">"Azure"</span>
-  ],
-  location: <span class="str">"Surat, India"</span>,
-  available: <span class="fn">true</span>
-};</pre></div>
-</div></section>
+</section>
 
-<section id="about"><div class="container">
-<div class="section-head"><div><div class="eyebrow">01 · About</div><h2>Engineering with purpose.</h2></div><p>From APIs and interfaces to cloud deployments, I enjoy owning the complete path from implementation to production.</p></div>
-<div class="about"><div class="panel"><p>Full-stack engineer with professional experience building and maintaining web applications using .NET MVC, ASP.NET Core Web API, React and Node.js. My work includes performance optimization, production Azure infrastructure, REST APIs, SQL and CI/CD workflows.</p><div class="skills"><span class="chip">C#</span><span class="chip">ASP.NET Core</span><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Node.js</span><span class="chip">SQL Server</span><span class="chip">Azure</span><span class="chip">CI/CD</span><span class="chip">GitHub Actions</span></div></div>
-<div class="panel"><div class="eyebrow">Core strengths</div><h3 style="margin:12px 0">What I bring</h3><p>Clean architecture, scalable REST APIs, responsive UIs, database optimization, Azure deployments, monitoring and practical problem solving. I also hold Microsoft Azure Fundamentals certification.</p></div></div>
-</div></section>
-
-<section id="projects"><div class="container">
-<div class="section-head"><div><div class="eyebrow">02 · Selected work</div><h2>Projects & builds.</h2></div><p>Explore the source code and technical work behind my applications. More repositories are available on GitHub.</p></div>
-<div class="projects">
-  <article class="project"><div class="project-top"><div class="icon">✈️</div><a class="link" href="https://github.com/aniket9016/EAZY-TRIPZY" target="_blank">GitHub ↗</a></div><h3>EAZY-TRIPZY</h3><p>Full-stack tourism booking platform covering hotels, flights, cars and restaurants, with JWT authentication, real-time booking logic and user/admin dashboards.</p><div class="chips"><span>ASP.NET Core</span><span>React</span><span>SQL Server</span><span>Material UI</span><span>JWT</span></div><div class="project-foot"><a class="btn" href="https://github.com/aniket9016/EAZY-TRIPZY" target="_blank">View details</a></div></article>
-  <article class="project"><div class="project-top"><div class="icon">🌱</div><a class="link" href="https://github.com/aniket9016/Plantree-E-Commerce-Application" target="_blank">GitHub ↗</a></div><h3>Plantree E-Commerce</h3><p>Android e-commerce application focused on secure authentication and a complete shopping experience, with biometric authentication and Firebase integration.</p><div class="chips"><span>Android</span><span>Java</span><span>Firebase</span><span>Biometric Auth</span></div><div class="project-foot"><a class="btn" href="https://github.com/aniket9016/Plantree-E-Commerce-Application" target="_blank">View details</a></div></article>
-  <article class="project"><div class="project-top"><div class="icon">🔐</div><a class="link" href="https://github.com/aniket9016/MERN-REGISTER-LOGIN" target="_blank">GitHub ↗</a></div><h3>MERN Register & Login</h3><p>Authentication-focused web project demonstrating registration and login flows with the MERN ecosystem.</p><div class="chips"><span>JavaScript</span><span>MongoDB</span><span>Express</span><span>React</span><span>Node.js</span></div><div class="project-foot"><a class="btn" href="https://github.com/aniket9016/MERN-REGISTER-LOGIN" target="_blank">View details</a></div></article>
-  <article class="project"><div class="project-top"><div class="icon">💼</div><a class="link" href="https://github.com/aniket9016/dev-aniket-portfolio" target="_blank">GitHub ↗</a></div><h3>Developer Portfolio</h3><p>A collection of web development projects and experiments maintained as a public project repository.</p><div class="chips"><span>JavaScript</span><span>Web Development</span></div><div class="project-foot"><a class="btn" href="https://github.com/aniket9016/dev-aniket-portfolio" target="_blank">View details</a></div></article>
-  <article class="project"><div class="project-top"><div class="icon">⚙️</div><a class="link" href="https://github.com/aniket9016/ASP-ASSIGNMENT3-QUESTION1" target="_blank">GitHub ↗</a></div><h3>ASP.NET Assignment</h3><p>ASP.NET development project demonstrating practical server-side web development concepts.</p><div class="chips"><span>ASP.NET</span><span>.NET</span></div><div class="project-foot"><a class="btn" href="https://github.com/aniket9016/ASP-ASSIGNMENT3-QUESTION1" target="_blank">View details</a></div></article>
-  <article class="project"><div class="project-top"><div class="icon">👤</div><a class="link" href="https://github.com/aniket9016/about-me" target="_blank">GitHub ↗</a></div><h3>About Me</h3><p>A personal web project and part of my early web development work.</p><div class="chips"><span>Web Development</span></div><div class="project-foot"><a class="btn" href="https://github.com/aniket9016/about-me" target="_blank">View details</a></div></article>
+<section id="about">
+<div class="container">
+  <div class="section-head"><div><div class="eyebrow">01 · Profile</div><h2>A developer with a production mindset.</h2></div><p>From UI components to APIs, SQL optimization and Azure infrastructure, I like understanding the whole system—not just one layer of it.</p></div>
+  <div class="grid2">
+    <div class="panel">
+      <h3>What I build</h3>
+      <p style="margin-top:10px">Full-stack applications using .NET / ASP.NET Core, React and Node.js, with SQL and cloud services behind them. My professional work includes live SaaS infrastructure, document-management systems, production releases and application performance improvements.</p>
+      <div class="chips">
+        <span class="chip">C#</span><span class="chip">.NET</span><span class="chip">ASP.NET Core</span><span class="chip">React.js</span><span class="chip">TypeScript</span><span class="chip">Node.js</span><span class="chip">REST APIs</span><span class="chip">SQL Server</span><span class="chip">MongoDB</span><span class="chip">Azure</span><span class="chip">Azure DevOps</span><span class="chip">GitHub Actions</span>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="eyebrow">Engineering philosophy</div>
+      <h3 style="margin:10px 0">Measure → simplify → ship.</h3>
+      <p>I focus on practical engineering outcomes: maintainable code, secure APIs, responsive interfaces, optimized database queries, observable cloud infrastructure and repeatable deployment workflows.</p>
+      <div class="chips"><span class="chip">Clean Architecture</span><span class="chip">Performance</span><span class="chip">CI/CD</span><span class="chip">Monitoring</span><span class="chip">Cloud Infrastructure</span></div>
+    </div>
+  </div>
 </div>
-<div style="text-align:center;margin-top:25px"><a class="btn primary" href="https://github.com/aniket9016?tab=repositories" target="_blank">Browse all GitHub repositories →</a></div>
-</div></section>
+</section>
 
-<section id="experience"><div class="container">
-<div class="section-head"><div><div class="eyebrow">03 · Experience</div><h2>Professional journey.</h2></div></div>
-<div class="experience">
-<div class="timeline"><h3>Associate Software Engineer · Triveni Global Software Services LLP</h3><div class="meta">June 2025 — Present · Surat, Gujarat</div><p>Build and maintain full-stack applications using .NET MVC, Web API, React and Node.js. Achieved 95% on-time sprint delivery, optimized SQL queries and React components to reduce page-load time by 30%, and supported Azure production deployments and release cycles.</p></div>
-<div class="timeline"><h3>Software Engineer Intern · Triveni Global Software Services LLP</h3><div class="meta">January 2025 — May 2025 · Surat, Gujarat</div><p>Built and integrated REST APIs with ASP.NET Core and .NET Web API, developed responsive React components and resolved frontend/backend issues during active sprint cycles.</p></div>
-<div class="timeline"><h3>MCA · Veer Narmad South Gujarat University</h3><div class="meta">2025 · CGPA 6.9</div><p>Master of Computer Applications.</p></div>
-</div></div></section>
+<section>
+<div class="container">
+  <div class="section-head"><div><div class="eyebrow">02 · Impact</div><h2>Numbers behind the work.</h2></div><p>Selected measurable outcomes from my professional experience and résumé.</p></div>
+  <div class="metrics">
+    <div class="metric"><div class="num">95%</div><small>Sprint features delivered on time</small></div>
+    <div class="metric"><div class="num">30%</div><small>Reduction in page-load time</small></div>
+    <div class="metric"><div class="num">3+</div><small>Years of combined internship + professional work</small></div>
+    <div class="metric"><div class="num">AZ-900</div><small>Microsoft Azure Fundamentals certified</small></div>
+  </div>
+</div>
+</section>
 
-<section id="services"><div class="container">
-<div class="section-head"><div><div class="eyebrow">04 · Freelance services</div><h2>How I can help.</h2></div><p>Available for focused freelance projects, feature development and application improvements.</p></div>
-<div class="services">
-<div class="service"><div class="icon">🧩</div><h3>Full-Stack Development</h3><p>Build responsive web applications with React on the frontend and ASP.NET Core/.NET on the backend.</p></div>
-<div class="service"><div class="icon">🔌</div><h3>API Development</h3><p>Design, build and integrate secure REST APIs with authentication, database connectivity and clean architecture.</p></div>
-<div class="service"><div class="icon">☁️</div><h3>Azure & Deployment</h3><p>Assist with Azure App Services, VMs, Functions, configuration, monitoring and production release workflows.</p></div>
-</div></div></section>
+<section id="experience">
+<div class="container">
+  <div class="section-head"><div><div class="eyebrow">03 · Experience</div><h2>From internship to production.</h2></div><p>Professional experience centered on full-stack delivery, Azure operations and measurable application improvements.</p></div>
+  <div class="timeline">
+    <div class="role">
+      <h3>Associate Software Engineer · Triveni Global Software Services LLP</h3>
+      <div class="meta">June 2025 — Present · Surat, Gujarat</div>
+      <ul>
+        <li>Build and maintain full-stack web applications with .NET MVC, Web API, React and Node.js using scalable architecture.</li>
+        <li>Achieved 95% on-time sprint delivery through Azure DevOps task tracking and structured execution.</li>
+        <li>Optimized SQL queries and React components, reducing page-load time by 30% across key modules.</li>
+        <li>Support Azure infrastructure deployments, configuration changes and production release cycles for a live SaaS platform.</li>
+      </ul>
+    </div>
+    <div class="role">
+      <h3>Software Engineer Intern · Triveni Global Software Services LLP</h3>
+      <div class="meta">January 2025 — May 2025 · Surat, Gujarat</div>
+      <ul>
+        <li>Built and integrated REST APIs using ASP.NET Core and .NET Web API to improve application data flow.</li>
+        <li>Developed responsive React.js components and resolved frontend/backend issues during active sprint cycles.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
 
-<section id="contact"><div class="container">
-<div class="contact"><div class="contact-box"><div class="eyebrow">05 · Contact</div><h2>Have a project in mind?</h2><p>Tell me what you're building, what needs fixing, or what you want to improve. Let's discuss the scope.</p><div class="actions"><a class="btn primary" href="mailto:aniketdubey638@gmail.com">Email me →</a><a class="btn" href="https://www.linkedin.com/in/aniket0638/" target="_blank">LinkedIn</a></div></div>
-<div class="contact-box"><h3>Quick links</h3><p>GitHub: @aniket9016<br>Location: Surat, Gujarat, India<br>Focus: .NET · React · Azure · APIs</p><a class="link" href="https://github.com/aniket9016" target="_blank">github.com/aniket9016 ↗</a></div></div>
-</div></section>
+<section id="work">
+<div class="container">
+  <div class="section-head"><div><div class="eyebrow">04 · Selected work</div><h2>Systems I've built or supported.</h2></div><p>A mix of professional systems and personal projects. Client/project details are kept at the level appropriate for a public portfolio.</p></div>
+  <div class="projects">
+    <article class="project">
+      <div class="tag">Professional · SaaS</div><h3>CalcuQuote</h3>
+      <p>Worked with a live SaaS platform, supporting Azure VMs, App Services and Functions, monitoring, health checks, logs, alerts, cost recommendations and security improvements.</p>
+      <div class="chips"><span>.NET Web API</span><span>React</span><span>Azure VMs</span><span>App Services</span><span>Functions</span><span>Monitoring</span></div>
+      <div class="project-foot"><a class="btn" href="https://elisaindustriq.com/calcuquote" target="_blank" rel="noreferrer">Project ↗</a></div>
+    </article>
+    <article class="project">
+      <div class="tag">Professional · Document Platform</div><h3>eDocuSight</h3>
+      <p>Developed secure REST APIs and responsive React components for a document-management platform, delivering sprint features through Azure DevOps and structured release cycles.</p>
+      <div class="chips"><span>.NET Web API</span><span>React.js</span><span>SQL Server</span><span>Azure DevOps</span></div>
+    </article>
+    <article class="project">
+      <div class="tag">Personal · Full Stack</div><h3>EAZY-TRIPZY</h3>
+      <p>Tourism booking platform covering hotels, flights, cars and restaurants, with JWT authentication, booking logic and separate user/admin dashboards.</p>
+      <div class="chips"><span>ASP.NET Core</span><span>React</span><span>Material UI</span><span>SQL Server</span><span>JWT</span></div>
+      <div class="project-foot"><a class="btn" href="https://github.com/aniket9016/EAZY-TRIPZY" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+    </article>
+    <article class="project">
+      <div class="tag">Personal · Android</div><h3>Plantree E-Commerce</h3>
+      <p>Android shopping application with Firebase integration, biometric authentication, encrypted data handling and user-behavior tracking for product insights.</p>
+      <div class="chips"><span>Android</span><span>Java</span><span>Firebase</span><span>Biometric Auth</span></div>
+      <div class="project-foot"><a class="btn" href="https://github.com/aniket9016/Plantree-E-Commerce-Application" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+    </article>
+    <article class="project">
+      <div class="tag">Personal · MERN</div><h3>Authentication Lab</h3>
+      <p>A focused MERN project demonstrating registration and login flows across MongoDB, Express, React and Node.js.</p>
+      <div class="chips"><span>MongoDB</span><span>Express</span><span>React</span><span>Node.js</span></div>
+      <div class="project-foot"><a class="btn" href="https://github.com/aniket9016/MERN-REGISTER-LOGIN" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+    </article>
+    <article class="project">
+      <div class="tag">More on GitHub</div><h3>Open-source project shelf</h3>
+      <p>Explore additional ASP.NET, portfolio and web-development experiments on my public GitHub profile.</p>
+      <div class="chips"><span>ASP.NET</span><span>Web Development</span><span>JavaScript</span></div>
+      <div class="project-foot"><a class="btn primary" href="https://github.com/aniket9016?tab=repositories" target="_blank" rel="noreferrer">Browse repositories →</a></div>
+    </article>
+  </div>
+</div>
+</section>
+
+<section id="education">
+<div class="container">
+  <div class="section-head"><div><div class="eyebrow">05 · Education</div><h2>Qualifications that support the craft.</h2></div><p>Yes—education belongs on the portfolio. For an early-career engineer, it adds useful context without competing with professional experience.</p></div>
+  <div class="edu">
+    <div class="edu-card"><div class="year">2025 · CGPA 6.9</div><h3>Master of Computer Applications (MCA)</h3><p>Veer Narmad South Gujarat University · Surat</p></div>
+    <div class="edu-card"><div class="year">2023 · CGPA 7.8</div><h3>Bachelor of Computer Applications (BCA)</h3><p>Veer Narmad South Gujarat University · Surat</p></div>
+  </div>
+  <div class="cert" style="margin-top:16px">
+    <div><div class="eyebrow">Certification</div><h3 style="margin-top:7px">Microsoft Certified: Azure Fundamentals (AZ-900)</h3><p>Microsoft · 2024</p></div>
+    <a class="btn" href="https://learn.microsoft.com/en-us/users/aniketdubey-0722/credentials/31048ef27746dbf8" target="_blank" rel="noreferrer">Verify credential ↗</a>
+  </div>
+</div>
+</section>
+
+<section>
+<div class="container">
+  <div class="section-head"><div><div class="eyebrow">06 · Capabilities</div><h2>Where I add value.</h2></div></div>
+  <div class="services">
+    <div class="service"><div class="ico">⚡</div><h3>Full-Stack Engineering</h3><p>Responsive React interfaces paired with maintainable .NET / ASP.NET Core services and database-backed applications.</p></div>
+    <div class="service"><div class="ico">☁️</div><h3>Azure & Cloud Operations</h3><p>Azure VMs, App Services, Functions, monitoring, configuration, release support and practical cost/security improvements.</p></div>
+    <div class="service"><div class="ico">🔌</div><h3>API & Data Engineering</h3><p>REST APIs, authentication, SQL optimization, MongoDB integrations and reliable application data flows.</p></div>
+  </div>
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+  <div class="contact">
+    <div class="contact-main">
+      <div class="eyebrow">07 · Contact</div>
+      <h2 style="margin-top:10px">Let's build something useful.</h2>
+      <p>Have a product idea, a feature to ship, an API to build or an application that needs a performance pass? Reach out.</p>
+      <div class="actions">
+        <a class="btn primary" href="mailto:aniketdubey638@gmail.com">Email Aniket →</a>
+        <a class="btn" href="https://www.linkedin.com/in/aniket0638/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+        <a class="btn" href="https://github.com/aniket9016" target="_blank" rel="noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="eyebrow">Quick facts</div>
+      <div class="contact-list">
+        <div>📍 Surat, Gujarat, India</div>
+        <div>✉ <a href="mailto:aniketdubey638@gmail.com">aniketdubey638@gmail.com</a></div>
+        <div>☎ +91 9016346047</div>
+        <div>💻 .NET · React · Azure · REST APIs</div>
+        <div>🎓 MCA · BCA · AZ-900</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
 </main>
-<footer><div class="container" style="display:flex;justify-content:space-between;gap:20px">© 2026 Aniket Dubey <span>Built with HTML, CSS & JavaScript-free simplicity.</span></div></footer>
+
+<footer><div class="container" style="display:flex;justify-content:space-between;gap:20px"><span>© 2026 Aniket Dubey</span><span>Designed for engineers who ship.</span></div></footer>
 </body>
 </html>
